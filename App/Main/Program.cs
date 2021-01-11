@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace GrowDataApp.Main
+namespace GrowDataApp.App.Main
 {
     public class Program
     {

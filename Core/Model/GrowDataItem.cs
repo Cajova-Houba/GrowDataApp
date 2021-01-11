@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GrowDataApp.Model
+namespace GrowDataApp.Core.Model
 {
     /// <summary>
     /// Class representing one data item received from the measure station.

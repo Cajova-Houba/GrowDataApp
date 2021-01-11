@@ -1,6 +1,6 @@
 using System;
 
-namespace GrowDataApp.Model
+namespace GrowDataApp.Core.Model
 {
     public class WeatherForecast
     {

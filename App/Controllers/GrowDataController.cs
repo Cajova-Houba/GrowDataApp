@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GrowDataApp.Model;
+using GrowDataApp.Core.Dao;
+using GrowDataApp.Core.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace GrowDataApp.Controllers
+namespace GrowDataApp.App.Controllers
 {
     /// <summary>
     /// Controller for accessing the grow data.
@@ -29,16 +30,7 @@ namespace GrowDataApp.Controllers
         public IEnumerable<GrowDataItem> Get()
         {
             _logger.LogInformation("Getting all records.");
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new GrowDataItem
-            {
-                Timestamp = DateTime.Now.AddDays(index),
-                SoilTemperature = (float)(24.0f + rng.NextDouble() * 5f),
-                SoilHumidity = (float)(24.0f + rng.NextDouble() * 5f),
-                AirTemperature = (float)(20.0f + rng.NextDouble() * 5f),
-                AirHumidity = (float)(20.0f + rng.NextDouble() * 5f)
-            })
-            .ToArray(); 
+            return GetDbContext().FindAll();
         }
 
         // GET api/<GrowDataController>/5
@@ -49,13 +41,14 @@ namespace GrowDataApp.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Saves new data item.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="dataItem">Data item to be saved.</param>
         // POST api/<GrowDataController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] GrowDataItem dataItem)
         {
+            GetDbContext().Save(dataItem);
         }
 
         // PUT api/<GrowDataController>/5
@@ -68,6 +61,11 @@ namespace GrowDataApp.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        private DbContext GetDbContext()
+        {
+            return HttpContext.RequestServices.GetService(typeof(DbContext)) as DbContext;
         }
     }
 }

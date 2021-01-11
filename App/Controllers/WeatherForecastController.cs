@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GrowDataApp.Model;
+using GrowDataApp.Core.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace GrowDataApp.Controllers
+namespace GrowDataApp.App.Controllers
 {
     /// <summary>
     /// TODO: use this to learn how stuff works and delete it afterwards
