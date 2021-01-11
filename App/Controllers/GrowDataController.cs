@@ -33,13 +33,6 @@ namespace GrowDataApp.App.Controllers
             return GetDbContext().FindAll();
         }
 
-        // GET api/<GrowDataController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         /// <summary>
         /// Saves new data item.
         /// </summary>
@@ -49,18 +42,6 @@ namespace GrowDataApp.App.Controllers
         public void Post([FromBody] GrowDataItem dataItem)
         {
             GetDbContext().Save(dataItem);
-        }
-
-        // PUT api/<GrowDataController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<GrowDataController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
 
         private DbContext GetDbContext()
