@@ -44,19 +44,19 @@ namespace GrowDataApp.App.Controllers
         /// TODO: used for debugging purposes, delete when not needed anymore.
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        [Route("/token")]
-        public string Token()
-        {
-            JwtSecurityToken token = new JwtSecurityToken(
-                    issuer: _configuration["JWT:Issuer"],
-                    audience: _configuration["JWT:Audience"],
-                    expires: DateTime.Now.AddHours(3),
-                    signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])), SecurityAlgorithms.HmacSha256)
-                    );
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
+        //[HttpGet]
+        //[Route("/token")]
+        //public string Token()
+        //{
+        //    JwtSecurityToken token = new JwtSecurityToken(
+        //            issuer: _configuration["JWT:Issuer"],
+        //            audience: _configuration["JWT:Audience"],
+        //            expires: DateTime.Now.AddHours(3),
+        //            signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])), SecurityAlgorithms.HmacSha256)
+        //            );
+		//
+        //    return new JwtSecurityTokenHandler().WriteToken(token);
+        //}
 
         /// <summary>
         /// Saves new data item.
