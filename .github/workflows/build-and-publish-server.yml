@@ -1,0 +1,24 @@
+name: build-and-publish-server
+on: [push]
+jobs:
+    build:
+        env:
+            working-directory: ./Server
+        runs-on: ubuntu-latest
+        name: Build using Dotnet 3.1.x
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup dotnet
+              uses: actions/setup-dotnet@v1
+              working-directory: ${{env.working-directory}}
+              with:
+                dotnet-version: '3.1.x'
+            - name: Build app
+              run: dotnet publish --configuration Release
+              working-directory: ${{env.working-directory}}
+            - name: Publish binaries
+              uses: actions/upload-artifact@v2
+              working-directory: ${{env.working-directory}}
+              with:
+                name: binaries
+                path: bin/Release/

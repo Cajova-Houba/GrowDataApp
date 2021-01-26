@@ -1,0 +1,6 @@
+# Playbook to install and configure nginx
+- name: Install Nginx
+  hosts: main-server
+  ansible.builtin.debug:
+    msg: Yay, it works!
+
