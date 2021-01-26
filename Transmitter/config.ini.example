@@ -1,0 +1,12 @@
+[JWT]
+Secret = top-secret
+Issuer = cajova_houba
+Audience = GrowDataApp
+Subject = ApiAccessToken
+
+[GrowDataApp]
+address = http://69.90.132.97:8666
+dataApiPath = /api/growdata
+
+[Arduino]
+port = /dev/ttyACM0

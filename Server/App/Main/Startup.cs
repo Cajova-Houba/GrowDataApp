@@ -63,7 +63,7 @@ namespace GrowDataApp.App.Main
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

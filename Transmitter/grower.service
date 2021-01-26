@@ -1,0 +1,12 @@
+[Unit]
+Description=Grower service which receives data from Arduino and sends them to my server.
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/grower
+ExecStart=/usr/bin/python3 /opt/grower/main.py
+StandardInput=tty-force
+User=pi
+
+[Install]
+WantedBy=multi-user.target
