@@ -1,0 +1,6 @@
+# where are the webapp data (index.html etc)
+grower_webapp_root: "/var/www/grower"
+
+# roots of the project and subprojects on the local machine
+project_root: ".."
+project_root_webapp: "{{ project_root }}/Webapp/"

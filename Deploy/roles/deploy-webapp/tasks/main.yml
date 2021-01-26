@@ -1,0 +1,15 @@
+# Role for actually deploying the web application
+# First, it creates the {{web_root}} directory. 
+# Then it copies the webapp from {{webapp_source}} {{web_root}}
+
+- name: Create webroot directory
+  file:
+    path: "{{ web_root }}"
+    state: directory
+
+- name: Copy webapp
+  copy:
+    src: "{{ webapp_source }}"
+    dest: "{{ web_root }}"
+    
+

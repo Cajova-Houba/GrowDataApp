@@ -1,8 +1,0 @@
-# Playbook to install and configure nginx
-- name: Install Nginx
-  hosts: main-server
-
-  tasks:
-  - debug:
-      msg: Yay, it works!
-

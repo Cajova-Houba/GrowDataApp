@@ -1,3 +1,4 @@
 # Inventory file for main (and only) server
 
+[main_server]
 69.90.132.97    ansible_connection=ssh      ansible_user=root

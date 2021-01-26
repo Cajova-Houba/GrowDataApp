@@ -1,0 +1,1 @@
+# Role to configure nginx to serve the Webapp

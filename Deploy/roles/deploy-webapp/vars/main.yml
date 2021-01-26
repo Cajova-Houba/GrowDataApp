@@ -1,0 +1,5 @@
+# where to copy the webapp data to
+web_root: "/var/www/html"
+
+# path on the local machine to webapp sources
+webapp_source: "/opt/webapp"

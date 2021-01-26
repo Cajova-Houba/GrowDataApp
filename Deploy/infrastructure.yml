@@ -1,0 +1,7 @@
+# Playbook to install the infrastructure needed to run the Server and the Webapp
+- name: Install Nginx
+  hosts: main_server
+
+  roles:
+    - ansible-role-nginx
+

@@ -1,0 +1,25 @@
+# Playbook to deploy the Webapp
+- hosts: main_server
+  tasks:
+  - name: Stop Nginx
+    service:
+      name: nginx
+      state: stopped
+
+  - name: Deploy the webapp
+    include_role:
+      name: deploy-webapp
+    vars:
+      web_root: "{{ grower_webapp_root }}"
+      webapp_source: "{{ project_root_webapp }}"
+
+  - name: Configure Nginx
+    include_role:
+      name: nginx-webapp
+    vars:
+      web_root: "{{ grower_webapp_root }}"
+
+  - name: Start Nginx
+    service:
+      name: nginx
+      state: started

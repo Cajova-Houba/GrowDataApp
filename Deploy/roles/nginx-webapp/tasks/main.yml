@@ -1,0 +1,11 @@
+---
+- name: Copy Nginx configuration
+  template:
+    src: templates/grower-webapp.j2
+    dest: /etc/nginx/sites-available/grower-webapp
+
+- name: Create simlink for nginx configuration
+  file:
+    src: /etc/nginx/sites-available/grower-webapp
+    dest: /etc/nginx/sites-enabled/grower-webapp
+    state: link
