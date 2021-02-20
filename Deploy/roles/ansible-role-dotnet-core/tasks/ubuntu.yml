@@ -1,0 +1,19 @@
+---
+- name: Make sure HTTPS is supported by apt
+  apt:
+    name: apt-transport-https
+    state: present
+    update_cache: yes
+
+- name: Import Microsoft APT key
+  apt_key:
+    url: "{{ dotnet_debian_repo_gpg_key_url }}"
+    state: present
+
+- name: Add repo for Ubuntu
+  apt_repository:
+    repo: "deb [arch=amd64] https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod {{ ansible_distribution_release }} main"
+    filename: "dotnetdev"
+    state: present
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"

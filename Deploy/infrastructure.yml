@@ -5,3 +5,10 @@
   roles:
     - ansible-role-nginx
 
+- name: Install .NET Core
+  hosts: main_server
+
+  roles:
+    - ansible-role-dotnet-core
+  vars:
+    - dotnet_package: "dotnet-sdk-3.1"  
