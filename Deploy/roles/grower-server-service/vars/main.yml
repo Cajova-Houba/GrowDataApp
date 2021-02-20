@@ -1,0 +1,10 @@
+# server working directory
+working_directory: "/opt/growerApp/netcoreapp3.1"
+
+# value of the ASPNETCORE_ENVIRONMENT env variable
+aspnet_env: "Development"
+
+# name of the service and service file 
+# in the /etc/systemd/system/ directory
+service_name: "growerapp"
+service_file_name: "{{ service_name }}.service"

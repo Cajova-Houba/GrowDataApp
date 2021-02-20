@@ -1,0 +1,9 @@
+# Playbook to deploy the server
+- hosts: main_server
+  tasks:
+
+  - name: Configure the app as a service
+    include_role:
+      name: grower-server-service
+    vars:
+      working_directory: "{{ grower_server_root }}"

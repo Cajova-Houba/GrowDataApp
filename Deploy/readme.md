@@ -22,3 +22,4 @@
 
  - setup infrastructure: `ansible-playbook -i ./inventories/main --extra-var 'ansible_ssh_private_key_file=ansible.key' infrastructure.yml`
  - deploy webapp: `ansible-playbook -i ./inventories/main --extra-var 'ansible_ssh_private_key_file=ansible.key' webapp.yml`
+ - deploy the server: `ansible-playbook -i ./inventories/main --extra-var 'ansible_ssh_private_key_file=ansible.key' server.yml`

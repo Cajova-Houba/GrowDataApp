@@ -4,3 +4,6 @@ grower_webapp_root: "/var/www/grower"
 # roots of the project and subprojects on the local machine
 project_root: ".."
 project_root_webapp: "{{ project_root }}/Webapp/"
+
+# where the server is installed
+grower_server_root: "/opt/growerApp/netcoreapp3.1"
