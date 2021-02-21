@@ -2,19 +2,19 @@
 - hosts: main_server
   tasks:
 
-  # - name: Build app
-  #   include_role:
-  #     name: build-server
-  #   vars:
-  #     server_source: "{{ project_root_server }}"
-  #     server_source_target: "{{ grower_server_source }}"
-  #     server_deploy_target: "{{ grower_server_binary }}"
+  - name: Build app
+    include_role:
+      name: build-server
+    vars:
+      server_source: "{{ project_root_server }}"
+      server_source_target: "{{ grower_server_source }}"
+      server_deploy_target: "{{ grower_server_binary }}"
 
-  # - name: Configure the app as a service
-  #   include_role:
-  #     name: grower-server-service
-  #   vars:
-  #     working_directory: "{{ grower_server_root }}"
+  - name: Configure the app as a service
+    include_role:
+      name: grower-server-service
+    vars:
+      working_directory: "{{ grower_server_root }}"
   
   - name: Deploy the server
     include_role:
