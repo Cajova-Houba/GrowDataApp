@@ -4,6 +4,13 @@ grower_webapp_root: "/var/www/grower"
 # roots of the project and subprojects on the local machine
 project_root: ".."
 project_root_webapp: "{{ project_root }}/Webapp/"
+project_root_server: "{{ project_root }}/Server/"
 
+# server working dir
+grower_server_work: "/opt/growerApp"
+# where the source gets copied to
+grower_server_source: "{{ grower_server_work }}/source"
+# where the built app can be found
+grower_server_binary: "{{ grower_server_work }}/deploy"
 # where the server is installed
-grower_server_root: "/opt/growerApp/netcoreapp3.1"
+grower_server_root: "{{ grower_server_work }}/netcoreapp3.1"

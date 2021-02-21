@@ -3,9 +3,9 @@
     src: templates/growerapp.service.j2
     dest: "/etc/systemd/system/{{ service_file_name }}"
 
-- name: Reloading the systemd and restarting the service
+- name: Reloading the systemd configuration
   systemd:
     daemon_reload: yes
     name: "{{ service_name }}"
-    state: restarted
+
     

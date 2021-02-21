@@ -1,0 +1,13 @@
+# service name to stop/start when deploying
+service_name: ""
+
+# server root folder
+server_root: ""
+
+# where the new buid is
+server_deploy_dir: ""
+
+# where the script for applying the configuration is
+config_script_dir: ""
+config_script_name: ""
+

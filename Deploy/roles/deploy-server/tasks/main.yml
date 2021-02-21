@@ -1,0 +1,25 @@
+- name: Stopping the server service
+  service:
+    name: "{{ service_name }}"
+    state: stopped
+
+- name: Removing the original folder
+  file:
+    path: "{{ server_root }}"
+    state: absent
+
+- name: Copying the new buid
+  copy:
+    remote_src: yes
+    src: "{{ server_deploy_dir }}"
+    dest: "{{ server_root }}"
+
+- name: Copying the configuration
+  shell:
+    chdir: "{{ config_script_dir }}"
+    name: "{{ config_script_name }}"
+
+- name: Starting the server service
+  service:
+    name: "{{ service_name }}"
+    state: started

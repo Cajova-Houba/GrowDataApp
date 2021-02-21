@@ -1,0 +1,11 @@
+# path to sources on local machine
+server_source: ""
+
+# path where to copy sources on the remote machine
+server_source_target: ""
+
+# path where build app is
+server_build_target: "{{ server_source_target }}/bin/Release/netcoreapp3.1"
+
+# path where to copy built app to be deployed
+server_deploy_target: ""

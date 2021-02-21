@@ -1,0 +1,37 @@
+- name: Clean source folder
+  file:
+    path: "{{ server_source_target }}"
+    state: absent
+
+- name: Recreate the source folder
+  file:
+    path: "{{ server_source_target }}"
+    state: directory
+    mode: '0744'
+
+- name: Copy sources
+  copy:
+    src: "{{ server_source }}"
+    dest: "{{ server_source_target }}"
+
+- name: Build app
+  shell:
+    chdir: "{{ server_source_target }}"
+    cmd: dotnet publish --configuration Release
+
+- name: Clean built destination
+  file:
+    path: "{{ server_deploy_target }}"
+    state: absent
+
+- name: Recreate deploy folder
+  file:
+    path: "{{ server_deploy_target }}"
+    state: directory
+    mode: '0744'
+
+- name: Copy built app to deploy destination
+  copy:
+    remote_src: yes
+    src: "{{ server_build_target }}"
+    dest: "{{ server_deploy_target }}"

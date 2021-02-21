@@ -2,8 +2,27 @@
 - hosts: main_server
   tasks:
 
+  - name: Build app
+    include_role:
+      name: build-server
+    vars:
+      server_source: "{{ project_root_server }}"
+      server_source_target: "{{ grower_server_source }}"
+      server_deploy_target: "{{ grower_server_binary }}"
+
   - name: Configure the app as a service
     include_role:
       name: grower-server-service
     vars:
       working_directory: "{{ grower_server_root }}"
+  
+  - name: Deploy the server
+    include_role:
+      name: deploy-server
+    vars:
+      service_name: "{{ growerapp }}"
+      server_root: "{{ grower_server_root }}"
+      server_deploy_dir: "{{ grower_server_binary }}/netcoreapp3.1"
+      config_script_dir: "{{ grower_server_work }}"
+      config_script_name: "copyConfig.sh"
+      
