@@ -11,15 +11,16 @@
 - name: Copying the new buid
   copy:
     remote_src: yes
-    src: "{{ server_deploy_dir }}"
+    src: "{{ server_deploy_dir }}/"
     dest: "{{ server_root }}"
 
 - name: Copying the configuration
   shell:
     chdir: "{{ config_script_dir }}"
-    name: "{{ config_script_name }}"
+    cmd: "{{ config_script_dir }}/{{ config_script_name }}"
 
 - name: Starting the server service
   service:
     name: "{{ service_name }}"
     state: started
+  

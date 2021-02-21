@@ -14,3 +14,5 @@ grower_server_source: "{{ grower_server_work }}/source"
 grower_server_binary: "{{ grower_server_work }}/deploy"
 # where the server is installed
 grower_server_root: "{{ grower_server_work }}/netcoreapp3.1"
+# server service name
+grower_server_service: "growerapp"
