@@ -32,6 +32,11 @@ namespace GrowDataApp.App.Main
             services.AddControllers();
             Console.WriteLine("Conn string:"+ Configuration.GetConnectionString("DefaultConnection"));
             services.Add(new ServiceDescriptor(typeof(DbContext), new DbContext(Configuration.GetConnectionString("DefaultConnection"))));
+            services.AddLogging(loggingBuilder =>
+            {
+                var loggingConf = Configuration.GetSection("Logging");
+                loggingBuilder.AddFile(loggingConf);
+            });
 
             services.AddAuthentication(options =>
             {
