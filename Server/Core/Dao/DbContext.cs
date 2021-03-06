@@ -84,6 +84,50 @@ namespace GrowDataApp.Core.Dao
             return res;
         }
 
+        /// <summary>
+        /// Returns grow items in given date time range.
+        /// </summary>
+        /// <param name="from">From - inclusive.</param>
+        /// <param name="to">To - exclusive</param>
+        /// <returns>Items in date range.</returns>
+        public IEnumerable<GrowDataItem> FindInDateRange(DateTime from, DateTime to)
+        {
+            List<GrowDataItem> res = new List<GrowDataItem>();
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                try
+                {
+                    conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Exception while opening mysql connection: " + ex.Message);
+                    return res;
+                }
+
+                MySqlCommand cmd = new MySqlCommand("select " +
+                    " * " +
+                    " from " +
+                    "   grow_data_item" +
+                    " where" +
+                    "   timestamp >= @from " +
+                    "   AND timestamp < @to ", conn);
+                cmd.Parameters.AddWithValue("from", from);
+                cmd.Parameters.AddWithValue("to", to);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        res.Add(ConvertFromReader(reader));
+                    }
+                }
+            }
+
+            return res;
+        }
+
         private MySqlConnection GetConnection()
         {
             return new MySqlConnection(ConnectionString);

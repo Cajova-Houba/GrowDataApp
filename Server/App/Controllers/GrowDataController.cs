@@ -32,31 +32,20 @@ namespace GrowDataApp.App.Controllers
             this._configuration = configuration;
         }
 
-        // GET: api/<GrowDataController>
         [HttpGet]
+        [Route("all")]
         public IEnumerable<GrowDataItem> Get()
         {
             _logger.LogInformation("Getting all records.");
             return GetDbContext().FindAll();
         }
 
-        /// <summary>
-        /// TODO: used for debugging purposes, delete when not needed anymore.
-        /// </summary>
-        /// <returns></returns>
-        //[HttpGet]
-        //[Route("/token")]
-        //public string Token()
-        //{
-        //    JwtSecurityToken token = new JwtSecurityToken(
-        //            issuer: _configuration["JWT:Issuer"],
-        //            audience: _configuration["JWT:Audience"],
-        //            expires: DateTime.Now.AddHours(3),
-        //            signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])), SecurityAlgorithms.HmacSha256)
-        //            );
-		//
-        //    return new JwtSecurityTokenHandler().WriteToken(token);
-        //}
+        [HttpGet]
+        public IEnumerable<GrowDataItem> GetInRange(DateTime from, DateTime to)
+        {
+            _logger.LogInformation("Getting records from {from} to {to}", from, to);
+            return GetDbContext().FindInDateRange(from, to);
+        }
 
         /// <summary>
         /// Saves new data item.
