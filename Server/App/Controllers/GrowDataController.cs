@@ -56,7 +56,15 @@ namespace GrowDataApp.App.Controllers
         [Authorize]
         public void Post([FromBody] GrowDataItem dataItem)
         {
-            GetDbContext().Save(dataItem);
+            _logger.LogInformation("Saving new data time for {timestamp}", dataItem.Timestamp);
+            try
+            {
+                GetDbContext().Save(dataItem);
+            } catch (Exception ex)
+            {
+                _logger.LogError("Unexpected exception when saving new data item: {exception}", ex.Message);
+                _logger.LogError("Stack trace: {stackTrace}", ex.StackTrace);
+            }
         }
 
         private DbContext GetDbContext()
