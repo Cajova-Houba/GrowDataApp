@@ -70,7 +70,13 @@ namespace GrowDataApp.Core.Dao
                     return res;
                 }
 
-                MySqlCommand cmd = new MySqlCommand("select * from grow_data_item", conn);
+                MySqlCommand cmd = new MySqlCommand("" +
+                    " select " +
+                    "   * " +
+                    " from " +
+                    "   grow_data_item" +
+                    " order by timestamp " +
+                    "", conn);
 
                 using(MySqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -112,7 +118,9 @@ namespace GrowDataApp.Core.Dao
                     "   grow_data_item" +
                     " where" +
                     "   timestamp >= @from " +
-                    "   AND timestamp < @to ", conn);
+                    "   AND timestamp < @to " +
+                    " order by timestamp " +
+                    "", conn);
                 cmd.Parameters.AddWithValue("from", from);
                 cmd.Parameters.AddWithValue("to", to);
 
