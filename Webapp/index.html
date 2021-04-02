@@ -4,21 +4,45 @@
 <head>
   <meta charset="utf-8">
 
-  <title>The HTML5 Herald</title>
+  <title>Grower App</title>
   <meta name="description" content="Grower data used to monitor my plant">
   <meta name="author" content="Cajova Houba">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css"> 
 
 </head>
 
 <body>
-  <canvas id="temperatureChart" width="400" height="100"></canvas>
-  <canvas id="humidityChart" width="400" height="100"></canvas>
+  <div class="container">
 
-  <!-- <script src="js/growData.js"></script> -->
-  <script src="js/Chart.min.js"></script>
-  <script src="js/app.js"></script>
-  <script>
-      showData();
-  </script>
+    <form>
+      <div class="row align-items-center">
+        <div class="col-6">
+          <label for="from" class="form-label">From</label>
+          <input type="date" id="from" name="from" class="form-control" value="2021-03-01">
+        </div>
+        <div class="col-6">
+          <label for="to" class="form-label">To</label>
+          <input type="date" id="to" name="to" class="form-control" value="2021-03-31">
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-auto">
+          <button type="button" class="btn btn-primary mt-3" onclick="showData();">Update</button>
+        </div>
+      </div>
+    </form>
+
+    <canvas id="temperatureChart" width="400" height="100"></canvas>
+    <canvas id="humidityChart" width="400" height="100"></canvas>
+
+    <!-- <script src="js/growData.js"></script> -->
+    <script src="js/Chart.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        showData();
+    </script>
+  </div>
 </body>
 </html>
